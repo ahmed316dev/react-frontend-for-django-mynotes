@@ -11,14 +11,14 @@ const NotePage = () => {
   useEffect(() => {
     ;(async () => {
       if (noteId === 'new') return
-      const response = await fetch(`/api/notes/${noteId}`)
+      const response = await fetch(`http://127.0.0.1:8000/api/notes/${noteId}`)
       const data = await response.json()
       setNote(data)
     })()
   }, [noteId])
 
   const createNote = async () => {
-    await fetch(`/api/notes/`, {
+    await fetch(`http://127.0.0.1:8000/api/notes/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const NotePage = () => {
   }
 
   const updateNote = async () => {
-    await fetch(`/api/notes/${noteId}/`, {
+    await fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const NotePage = () => {
   }
 
   const deleteNote = async () => {
-    fetch(`/api/notes/${noteId}/`, {
+    fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
